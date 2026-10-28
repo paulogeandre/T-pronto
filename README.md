@@ -13,7 +13,9 @@ Protótipo navegável de alta fidelidade para a disciplina Design Profissional. 
 
 ## Estado atual
 
-Pesquisa documentada e protótipos locais disponíveis. Equipe e responsabilidades definidas. Persona, jornada, logotipo, guia de estilo e telas estão reunidos no documento de UI/UX. O protótipo navegável usa tema escuro e o logotipo da empresa. Back-end, banco de dados e integrações oficiais não estão implementados. A publicação no GitHub ainda não foi confirmada.
+Pesquisa documentada e protótipos locais disponíveis. Equipe e responsabilidades definidas. Persona, jornada, logotipo, guia de estilo e telas estão reunidos no documento de UI/UX. O protótipo navegável usa tema escuro e o logotipo da empresa. Back-end, banco de dados e integrações oficiais não estão implementados.
+
+Repositório do projeto: [paulogeandre/T-pronto](https://github.com/paulogeandre/T-pronto).
 
 ## Abrir
 
