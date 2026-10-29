@@ -6,4 +6,3 @@
 | Fellipe Augusto | Designer UI/UX e Desenvolvedor Front-end | Identidade visual, persona, jornada do usuário, protótipos e implementação das interfaces |
 | Rennan Jackowski | Desenvolvedor Back-end e Responsável por Dados | Recebimento dos pedidos, regras de negócio, banco de dados, controle de estoque e instruções de execução |
 
-Os três integrantes participam do desenvolvimento, da revisão, dos testes e da apresentação. Cada função identifica o responsável principal por uma frente de trabalho.
