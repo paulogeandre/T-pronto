@@ -5,12 +5,14 @@
   const limits = [120000, 900000, 300000];
   const recipe = { pao: 1, carne: 1, bacon: 2, queijo: 1 };
   function createState(now = Date.now()) {
-    const state = { sequence: 1048, orders: [], stock: {
-      pao: { name: 'Pão de hambúrguer', unit: 'un.', qty: 30, min: 10 },
-      carne: { name: 'Hambúrguer', unit: 'un.', qty: 28, min: 10 },
-      bacon: { name: 'Bacon', unit: 'fatias', qty: 26, min: 20 },
-      queijo: { name: 'Queijo', unit: 'fatias', qty: 40, min: 15 }
-    } };
+    const state = {
+      sequence: 1048, orders: [], stock: {
+        pao: { name: 'Pão de hambúrguer', unit: 'un.', qty: 30, min: 10 },
+        carne: { name: 'Hambúrguer', unit: 'un.', qty: 28, min: 10 },
+        bacon: { name: 'Bacon', unit: 'fatias', qty: 26, min: 20 },
+        queijo: { name: 'Queijo', unit: 'fatias', qty: 40, min: 15 }
+      }
+    };
     const seeds = [
       ['1042', 'iFood', 0, 105000, 105000, 2, 'Sem cebola'],
       ['1043', 'Rappi', 0, 45000, 45000, 1, 'Enviar guardanapos'],
@@ -55,9 +57,11 @@
   function metrics(state, now = Date.now()) {
     const today = state.orders.filter(o => sameDay(o.receivedAt, now));
     const dispatched = state.orders.filter(o => o.stage === 3 && sameDay(o.dispatchedAt, now));
-    return { total: today.length, late: today.filter(o => status(o, now) === 'late').length,
+    return {
+      total: today.length, late: today.filter(o => status(o, now) === 'late').length,
       average: dispatched.length ? dispatched.reduce((sum, o) => sum + o.dispatchedAt - o.receivedAt, 0) / dispatched.length : null,
-      channels: Object.fromEntries(['iFood', 'Rappi', '99Food'].map(p => [p, today.filter(o => o.platform === p).length])) };
+      channels: Object.fromEntries(['iFood', 'Rappi', '99Food'].map(p => [p, today.filter(o => o.platform === p).length]))
+    };
   }
   const api = { createState, receive, advance, status, metrics, stages, limits };
   if (typeof module !== 'undefined') module.exports = api;
