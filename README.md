@@ -1,51 +1,101 @@
 # TáPronto
 
-Protótipo navegável de alta fidelidade para a disciplina Design Profissional. Grupo: Paulo Geandre, Fellipe Augusto e Rennan Jackowski.
+**Sistema integrado de gestão para dark kitchens**: um painel único que reúne pedidos de vários apps de delivery, controla o tempo de cada etapa e dá baixa automática nos ingredientes.
 
-## Documentação do projeto
+Projeto Integrador da disciplina **Design Profissional** (Universidade Positivo), orientado pelo Prof. Me. Sedenilso Antonio Machado. Segmento escolhido: *Sistema Integrado de Gestão para Cozinhas Sob Demanda (Dark Kitchens)*.
 
-- [Logotipo TáPronto em SVG](docs/identidade-visual/logo-tapronto.svg).
-- [Equipe e responsabilidades](docs/equipe.md).
-- [Requisitos e protótipos UI/UX em PDF](docs/uiux/TaPronto_Prototipo_UIUX.pdf).
-- [Identidade visual, persona e jornada](docs/identidade-visual/design-uiux.md).
-- [Pesquisa de campo](docs/pesquisa/pesquisa-de-campo.md): três entrevistas presenciais de 17/10/2026, metodologia, relatos, matriz de dores e requisitos propostos.
-- [Wireframes de baixa fidelidade](baixa-fidelidade/index.html): pedidos, estoque e dashboard, com imagens PNG e fontes SVG na mesma pasta.
+## Demonstração online
 
-## Estado atual
+**Acesse o protótipo funcional: https://paulogeandre.github.io/T-pronto/**
 
-Pesquisa documentada e protótipos locais disponíveis. Equipe e responsabilidades definidas. Persona, jornada, logotipo, guia de estilo e telas estão reunidos no documento de UI/UX. O protótipo navegável usa tema escuro e o logotipo da empresa. Back-end, banco de dados e integrações oficiais não estão implementados.
+Não é preciso instalar nada nem criar conta. Os dados são de exemplo e ficam apenas no navegador de quem acessa.
 
-Repositório do projeto: [paulogeandre/T-pronto](https://github.com/paulogeandre/T-pronto).
+> Se o link ainda não abrir, o GitHub Pages precisa estar ativado em *Settings → Pages → Source: GitHub Actions*.
 
-## Abrir
+## Equipe
 
-Abra `dist/index.html` em um navegador. Não é necessário instalar dependências. A fonte externa é opcional; sem internet, o navegador usa a fonte local.
+| Integrante | Função | Responsabilidades |
+| --- | --- | --- |
+| Paulo Geandre | Analista de Requisitos e Gestor do Projeto | Pesquisa, requisitos, cronograma, documentação |
+| Fellipe Augusto | Designer UI/UX e Desenvolvedor Front-end | Identidade visual, persona, jornada, protótipos, interfaces |
+| Rennan Jackowski | Desenvolvedor Back-end e Responsável por Dados | Regras de negócio, pedidos, estoque, banco de dados, instruções de execução |
 
-## Demonstrar
+Detalhes em [docs/equipe.md](docs/equipe.md).
 
-1. No painel, observe os exemplos em quatro etapas, incluindo cartões em atenção e atrasados.
-2. Use **Pedido de teste** para inserir um pedido fictício. Os canais se alternam.
-3. Clique em **Iniciar preparo** e consulte **Estoque** para observar a baixa conforme a ficha técnica.
-4. Volte ao painel e avance até **Expedido**. O tempo da etapa reinicia; o tempo total permanece registrado.
-5. Consulte **Dashboard** para ver os indicadores diários.
-6. Use **Restaurar demonstração** para recomeçar. Essa ação exige confirmação.
+## Andamento do projeto
 
-## Regras implementadas no protótipo
+| Fase | Entrega | Situação |
+| --- | --- | --- |
+| 1. Pesquisa de campo | 3 entrevistas presenciais (17/10/2026) | Concluída: [pesquisa](docs/pesquisa/pesquisa-de-campo.md) |
+| 2. UI/UX | Logo, guia de estilo, persona, jornada, baixa e alta fidelidade | Concluída: [design](docs/identidade-visual/design-uiux.md), [PDF](docs/uiux/TaPronto_Prototipo_UIUX.pdf), [wireframes](baixa-fidelidade/index.html) |
+| 3. MVP | Fluxo principal funcionando (front-end com regras de negócio) | Em andamento |
+| 4. Engenharia | Back-end, banco de dados e execução local | Pendente |
+
+## Funcionalidades já implementadas
+
+- Painel de pedidos em quatro etapas: **Novo → Em preparo → Pronto → Expedido**.
+- Filtro por canal (iFood, Rappi, 99Food) e botão para gerar pedido de teste.
+- Cronômetro por etapa, com alerta de atenção (80% do limite) e atraso (acima de 100%).
+- Controle de estoque com baixa automática pela ficha técnica e alerta de saldo mínimo.
+- Dashboard diário: pedidos por canal, tempo médio até a expedição e pedidos atrasados.
+- Persistência no navegador e botão para restaurar a demonstração.
+- Testes automatizados das regras de negócio (`verify.cjs`).
+
+### Regras de negócio
 
 - Etapas sequenciais, sem saltos.
-- Limites de 2, 15 e 5 minutos. Atenção a partir de 80%; atraso acima de 100%.
+- Limites por etapa: Novo 2 min, Em preparo 15 min, Pronto 5 min.
 - Atualização visual a cada 3 segundos.
-- Identificação única por plataforma e número de pedido.
-- Baixa única ao iniciar preparo, usando a quantidade de pratos e a ficha técnica.
-- Alerta quando o saldo é igual ou inferior ao mínimo.
-- Bloqueio do início do preparo se não houver ingredientes suficientes. Esta é uma decisão proposta para o protótipo, sujeita à validação do grupo.
-- Indicadores por dia local do navegador; média baseada em pedidos expedidos no dia.
-- Persistência local no navegador, quando disponível. Não há sincronização entre dispositivos ou abas.
+- Pedido único por plataforma e número (evita duplicidade).
+- Baixa de ingredientes uma única vez, ao iniciar o preparo.
+- Início do preparo bloqueado se faltar ingrediente (decisão do grupo para o protótipo).
 
-## Limites desta entrega
+## Como executar localmente
 
-Esta entrega é um protótipo de interface. Os pedidos e canais são simulados, não há integração oficial com iFood, Rappi ou 99Food, e não existem endpoints HTTP, servidor, autenticação, banco de dados ou `simular_pedido.py` nesta versão. A integração e a persistência do MVP ainda precisam ser implementadas. Não são resultados de entrevistas.
+Requisitos: nenhum para abrir o protótipo; [Node.js](https://nodejs.org) 18 ou superior para testes e servidor local.
 
-## Verificação
+```bash
+git clone https://github.com/paulogeandre/T-pronto.git
+cd T-pronto
+```
 
-O arquivo `verify.cjs` testa as regras de duplicidade por plataforma, fluxo sequencial, baixa única, limites de tempo, estoque insuficiente e indicadores. Execute com Node.js: `node verify.cjs`.
+Opção 1: abrir `dist/index.html` direto no navegador.
+
+Opção 2: servidor local em http://127.0.0.1:4175
+
+```bash
+node preview.cjs
+```
+
+Rodar os testes das regras:
+
+```bash
+node verify.cjs
+```
+
+## Estrutura do repositório
+
+```
+dist/              Protótipo funcional (HTML, CSS e JavaScript puros)
+baixa-fidelidade/  Wireframes (PNG e SVG)
+docs/              Pesquisa, identidade visual, UI/UX e equipe
+verify.cjs         Testes das regras de negócio
+preview.cjs        Servidor local de apoio
+```
+
+**Tecnologias atuais:** HTML5, CSS3, JavaScript (sem frameworks) e Node.js para testes. Dados persistidos em `localStorage`.
+
+## O que falta fazer
+
+- [ ] Back-end com endpoints HTTP, incluindo `POST /webhook/<plataforma>` para receber pedidos.
+- [ ] Banco de dados para pedidos, ficha técnica e estoque, substituindo o `localStorage`.
+- [ ] Simulador de pedidos de plataformas (script que envia pedidos ao webhook).
+- [ ] Conectar o front-end à API.
+- [ ] Teste de usabilidade do fluxo principal com usuários.
+- [ ] Diagrama de arquitetura e guia de execução completo (back-end e banco).
+- [ ] Relatório final em PDF, com as seções exigidas no enunciado (entrega em 17/11).
+- [ ] Preparar o pitch e a demonstração ao vivo.
+
+## Limites atuais
+
+Os pedidos e canais são simulados. Não há integração oficial com iFood, Rappi ou 99Food, nem servidor, autenticação ou banco de dados. A pesquisa tem amostra pequena e exploratória, e não deve ser lida como resultado estatístico do mercado.
