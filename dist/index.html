@@ -1,9 +1,104 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TáPronto — Painel da cozinha</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"></head>
-<body><aside><a class="brand" href="#pedidos" aria-label="TáPronto — painel de pedidos"><img src="logo-tapronto.svg" alt="TáPronto" width="264" height="64"></a><p class="caption">GESTÃO DA COZINHA</p><nav><button data-view="pedidos" class="active">▦ <span>Pedidos</span></button><button data-view="estoque">▤ <span>Estoque</span></button><button data-view="dashboard">◷ <span>Dashboard</span></button></nav><div class="aside-bottom"><span class="live-dot"></span> Cozinha em operação<p>Protótipo acadêmico · dados de exemplo</p></div></aside>
-<main><header><div><p class="eyebrow">TÁPRONTO / OPERAÇÃO</p><h1 id="title">Painel de pedidos</h1><p id="subtitle">Cada pedido no seu tempo. Sua cozinha no controle.</p></div><div class="header-actions"><span id="clock"></span><button class="primary" id="new">+ Pedido de teste</button></div></header>
-<div class="demo-bar"><span>Ambiente de demonstração</span> Pedidos e canais simulados. Sem conexão com plataformas de delivery.</div>
-<section id="pedidos" class="view"><div class="toolbar"><div class="filters" aria-label="Filtrar por plataforma"><button class="selected" data-filter="Todos">Todos os canais</button><button data-filter="iFood">iFood</button><button data-filter="Rappi">Rappi</button><button data-filter="99Food">99Food</button></div><span class="refresh"><i class="live-dot"></i> Atualização a cada 3 s</span></div><div id="board" class="board"></div><div class="legend"><span><i class="swatch normal"></i>Dentro do prazo</span><span><i class="swatch attention"></i>Atenção · a partir de 80%</span><span><i class="swatch late"></i>Limite ultrapassado</span></div></section>
-<section id="estoque" class="view" hidden><div class="section-top"><div><h2>Ingredientes disponíveis</h2><p>A baixa acontece ao iniciar o preparo, conforme a ficha técnica.</p></div><span class="pill">Baixa automática</span></div><div id="stock-alert"></div><div class="table-wrap"><table><thead><tr><th>Ingrediente</th><th>Saldo</th><th>Mínimo</th><th>Situação</th></tr></thead><tbody id="stock"></tbody></table></div><div class="recipe"><h2>Ficha técnica · X-Bacon</h2><p>Por unidade: 1 pão, 1 hambúrguer, 2 fatias de bacon e 1 fatia de queijo.</p><small>Todos os pedidos deste protótipo usam essa ficha técnica.</small></div></section>
-<section id="dashboard" class="view" hidden><div class="section-top"><div><h2>O ritmo da sua cozinha</h2><p id="today"></p></div><span class="pill">Indicadores do dia</span></div><div class="metrics" id="metrics"></div><div class="charts"><article><h2>Pedidos por canal</h2><p>Pedidos recebidos hoje, incluindo os já expedidos.</p><div id="channels"></div></article><article><h2>Como os indicadores são calculados</h2><p><strong>Tempo médio até a expedição</strong><br>Do recebimento até a saída da cozinha, apenas para pedidos expedidos hoje.</p><p><strong>Pedidos atrasados</strong><br>Pedidos ativos recebidos hoje que ultrapassaram o limite da etapa atual.</p><p class="muted">Limites: Novo 2 min · Em preparo 15 min · Pronto 5 min.</p></article></div></section>
-<footer>TáPronto · Paulo Geandre · Fellipe Augusto · Rennan Jackowski <button id="reset">Restaurar demonstração</button></footer></main><div id="toast" role="status" aria-live="polite"></div><script src="app.js"></script></body></html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TáPronto — Painel da cozinha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+
+<body>
+    <aside><a class="brand" href="#pedidos" aria-label="TáPronto — painel de pedidos"><img src="logo-tapronto.svg"
+                alt="TáPronto" width="264" height="64"></a>
+        <p class="caption">GESTÃO DA COZINHA</p>
+        <nav><button data-view="pedidos" class="active">▦ <span>Pedidos</span></button><button data-view="estoque">▤
+                <span>Estoque</span></button><button data-view="dashboard">◷ <span>Dashboard</span></button></nav>
+        <div class="aside-bottom"><span class="live-dot"></span> Cozinha em operação<p>Protótipo acadêmico · dados de
+                exemplo</p>
+        </div>
+    </aside>
+    <main>
+        <header>
+            <div>
+                <p class="eyebrow">TÁPRONTO / OPERAÇÃO</p>
+                <h1 id="title">Painel de pedidos</h1>
+                <p id="subtitle">Cada pedido no seu tempo. Sua cozinha no controle.</p>
+            </div>
+            <div class="header-actions"><span id="clock"></span><button class="primary" id="new">+ Pedido de
+                    teste</button></div>
+        </header>
+        <div class="demo-bar"><span>Ambiente de demonstração</span> Pedidos e canais simulados. Sem conexão com
+            plataformas de delivery.</div>
+        <section id="pedidos" class="view">
+            <div class="toolbar">
+                <div class="filters" aria-label="Filtrar por plataforma"><button class="selected"
+                        data-filter="Todos">Todos os canais</button><button data-filter="iFood">iFood</button><button
+                        data-filter="Rappi">Rappi</button><button data-filter="99Food">99Food</button></div><span
+                    class="refresh"><i class="live-dot"></i> Atualização a cada 3 s</span>
+            </div>
+            <div id="board" class="board"></div>
+            <div class="legend"><span><i class="swatch normal"></i>Dentro do prazo</span><span><i
+                        class="swatch attention"></i>Atenção · a partir de 80%</span><span><i
+                        class="swatch late"></i>Limite ultrapassado</span></div>
+        </section>
+        <section id="estoque" class="view" hidden>
+            <div class="section-top">
+                <div>
+                    <h2>Ingredientes disponíveis</h2>
+                    <p>A baixa acontece ao iniciar o preparo, conforme a ficha técnica.</p>
+                </div><span class="pill">Baixa automática</span>
+            </div>
+            <div id="stock-alert"></div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Saldo</th>
+                            <th>Mínimo</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stock"></tbody>
+                </table>
+            </div>
+            <div class="recipe">
+                <h2>Ficha técnica · X-Bacon</h2>
+                <p>Por unidade: 1 pão, 1 hambúrguer, 2 fatias de bacon e 1 fatia de queijo.</p><small>Todos os pedidos
+                    deste protótipo usam essa ficha técnica.</small>
+            </div>
+        </section>
+        <section id="dashboard" class="view" hidden>
+            <div class="section-top">
+                <div>
+                    <h2>O ritmo da sua cozinha</h2>
+                    <p id="today"></p>
+                </div><span class="pill">Indicadores do dia</span>
+            </div>
+            <div class="metrics" id="metrics"></div>
+            <div class="charts">
+                <article>
+                    <h2>Pedidos por canal</h2>
+                    <p>Pedidos recebidos hoje, incluindo os já expedidos.</p>
+                    <div id="channels"></div>
+                </article>
+                <article>
+                    <h2>Como os indicadores são calculados</h2>
+                    <p><strong>Tempo médio até a expedição</strong><br>Do recebimento até a saída da cozinha, apenas
+                        para pedidos expedidos hoje.</p>
+                    <p><strong>Pedidos atrasados</strong><br>Pedidos ativos recebidos hoje que ultrapassaram o limite da
+                        etapa atual.</p>
+                    <p class="muted">Limites: Novo 2 min · Em preparo 15 min · Pronto 5 min.</p>
+                </article>
+            </div>
+        </section>
+        <footer>TáPronto · Paulo Geandre · Fellipe Augusto · Rennan Jackowski <button id="reset">Restaurar
+                demonstração</button></footer>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>
