@@ -38,4 +38,4 @@ node verify.cjs
 
 - `dist/`: o sistema (HTML, CSS e JavaScript).
 - `baixa-fidelidade/`: wireframes.
-- `docs/`: pesquisa de campo, identidade visual, UI/UX e equipe.
+- `docs/`: pesquisa de campo, identidade visual, UI/UX, equipe e [relatório final em PDF](docs/relatorio/Relatorio_Final_TaPronto.pdf).
