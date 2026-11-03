@@ -29,7 +29,7 @@ Detalhes em [docs/equipe.md](docs/equipe.md).
 | 1. Pesquisa de campo | 3 entrevistas presenciais (17/10/2026) | Concluída: [pesquisa](docs/pesquisa/pesquisa-de-campo.md) |
 | 2. UI/UX | Logo, guia de estilo, persona, jornada, baixa e alta fidelidade | Concluída: [design](docs/identidade-visual/design-uiux.md), [PDF](docs/uiux/TaPronto_Prototipo_UIUX.pdf), [wireframes](baixa-fidelidade/index.html) |
 | 3. MVP | Fluxo principal funcionando (front-end com regras de negócio) | Em andamento |
-| 4. Engenharia | Back-end, banco de dados e execução local | Pendente |
+| 4. Engenharia | Back-end e execução local (banco de dados fora do escopo por orientação do professor) | Pendente |
 
 ## Funcionalidades já implementadas
 
@@ -88,14 +88,13 @@ preview.cjs        Servidor local de apoio
 ## O que falta fazer
 
 - [ ] Back-end com endpoints HTTP, incluindo `POST /webhook/<plataforma>` para receber pedidos.
-- [ ] Banco de dados para pedidos, ficha técnica e estoque, substituindo o `localStorage`.
 - [ ] Simulador de pedidos de plataformas (script que envia pedidos ao webhook).
 - [ ] Conectar o front-end à API.
 - [ ] Teste de usabilidade do fluxo principal com usuários.
-- [ ] Diagrama de arquitetura e guia de execução completo (back-end e banco).
+- [ ] Diagrama de arquitetura e guia de execução completo do back-end.
 - [ ] Relatório final em PDF, com as seções exigidas no enunciado (entrega em 17/11).
 - [ ] Preparar o pitch e a demonstração ao vivo.
 
 ## Limites atuais
 
-Os pedidos e canais são simulados. Não há integração oficial com iFood, Rappi ou 99Food, nem servidor, autenticação ou banco de dados. A pesquisa tem amostra pequena e exploratória, e não deve ser lida como resultado estatístico do mercado.
+Os pedidos e canais são simulados. Não há integração oficial com iFood, Rappi ou 99Food, nem servidor ou autenticação. Por orientação do professor, o banco de dados ficou fora do escopo desta etapa. A pesquisa tem amostra pequena e exploratória, e não deve ser lida como resultado estatístico do mercado.
